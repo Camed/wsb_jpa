@@ -3,6 +3,7 @@ package com.jpacourse.rest;
 import com.jpacourse.dto.AddressTO;
 import com.jpacourse.rest.exception.EntityNotFoundException;
 import com.jpacourse.service.AddressService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class AddressController
 {
-
+    @Autowired
     private final AddressService addressService;
 
 

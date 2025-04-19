@@ -11,13 +11,20 @@ public class AddressEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@Column
 	private String city;
 
+	@Column
 	private String addressLine1;
 
+	@Column
 	private String addressLine2;
 
 	private String postalCode;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="DOCTOR_ID")
+	private DoctorEntity doctor;
 
 	public Long getId() {
 		return id;

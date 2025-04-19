@@ -17,6 +17,14 @@ public class VisitEntity {
 	@Column(nullable = false)
 	private LocalDateTime time;
 
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="PATIENT_ID")
+	private PatientEntity patient;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="DOCTOR_ID")
+	private DoctorEntity doctor;
+
 	public Long getId() {
 		return id;
 	}
@@ -41,4 +49,19 @@ public class VisitEntity {
 		this.time = time;
 	}
 
+	public PatientEntity getPatient() {
+		return patient;
+	}
+
+	public void setPatient(PatientEntity patient) {
+		this.patient = patient;
+	}
+
+	public DoctorEntity getDoctor() {
+		return doctor;
+	}
+
+	public void setDoctor(DoctorEntity doctor) {
+		this.doctor = doctor;
+	}
 }

@@ -1,7 +1,10 @@
 package com.jpacourse.persistance.entity;
 
 import java.time.LocalDate;
+import java.util.List;
 
+import com.jpacourse.persistance.dao.PatientDao;
+import com.jpacourse.persistance.dao.impl.PatientDaoImpl;
 import jakarta.persistence.*;
 
 @Entity
@@ -28,6 +31,12 @@ public class PatientEntity {
 
 	@Column(nullable = false)
 	private LocalDate dateOfBirth;
+
+	@Column(nullable = false)
+	private boolean isUnderRegularObservation;
+
+	@OneToMany(mappedBy="patient", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<VisitEntity> visits;
 
 	public Long getId() {
 		return id;
@@ -85,4 +94,19 @@ public class PatientEntity {
 		this.dateOfBirth = dateOfBirth;
 	}
 
+    public List<VisitEntity> getVisits() {
+        return visits;
+    }
+
+    public void setVisits(List<VisitEntity> visits) {
+        this.visits = visits;
+    }
+
+    public boolean isUnderRegularObservation() {
+        return isUnderRegularObservation;
+    }
+
+    public void setUnderRegularObservation(boolean underRegularObservation) {
+        isUnderRegularObservation = underRegularObservation;
+    }
 }
